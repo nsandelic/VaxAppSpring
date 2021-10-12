@@ -1,3 +1,4 @@
+/*
 package hr.sandelic.waxapp;
 
 import ch.qos.logback.core.CoreConstants;
@@ -10,8 +11,8 @@ public class MockVaccineRepository  implements VaccineRepository{
 
 
     private final List<Vaccine> mocked_vaccines = new ArrayList<>( (Arrays.asList(
-            new Vaccine("AZD1222", "AstraZeneca", "Viral Vector", 2, 1200),
-            new Vaccine("BNT162b2", "Pfizer-BioTech", "RNA", 2, 1000)
+            new Vaccine(1, "AZD1222", "AstraZeneca", "Viral Vector", 2, 1200),
+            new Vaccine(1, "BNT162b2", "Pfizer-BioTech", "RNA", 2, 1000)
         )
     ));
 
@@ -68,7 +69,7 @@ public class MockVaccineRepository  implements VaccineRepository{
 }
 
 
-
+*/
 
 
 

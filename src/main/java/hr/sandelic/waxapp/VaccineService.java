@@ -7,10 +7,10 @@ public interface VaccineService {
 
     List<VaccineDTO> findAll();
 
-    VaccineDTO findVaccineByManufacturersName (String researchName);
+    VaccineDTO findVaccineByManufacturersName (String manufacturersName);
 
     VaccineDTO addNewVaccine (VaccineCommand command);
 
-    int deleteaccineByResearchName(String researchName);
+    void deleteVaccineByManufacturersName(String manufacturersName);
 
 }

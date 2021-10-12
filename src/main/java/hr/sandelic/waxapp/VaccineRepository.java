@@ -7,10 +7,10 @@ public interface VaccineRepository {
 
     List<Vaccine> findAll();
 
-    Optional<Vaccine> findVaccineByManufacturersName(String researchName);
+    Optional<Vaccine> findVaccineByManufacturersName(String manufacturersName);
 
-    Vaccine addNewVaccine (VaccineCommand command);
+    Vaccine addNewVaccine (Vaccine vaccine);
 
-    int deleteaccineByResearchName(String researchName);
+    void deleteVaccineByManufacturersName(String manufacturersName);
 
 }

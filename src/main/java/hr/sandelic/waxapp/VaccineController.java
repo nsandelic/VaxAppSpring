@@ -44,14 +44,9 @@ public class VaccineController {
             else return new ResponseEntity<VaccineDTO>( newVaccineDTO,  HttpStatus.CREATED );
     }
 
-    @DeleteMapping( path = "{researchName}")
-    public ResponseEntity<VaccineDTO> deleteByReaserchName(@PathVariable("researchName") String researchName){
-        int deleted = vaccineService.deleteaccineByResearchName(researchName);
-        if (deleted == 1)
-            return new ResponseEntity<VaccineDTO>(HttpStatus.OK);
-        else return new ResponseEntity<VaccineDTO>(HttpStatus.NOT_FOUND);
-
-
+    @DeleteMapping( path = "/{manufacturersName}")
+    public void deleteByReaserchName(@PathVariable("manufacturersName") String manufacturersName){
+        vaccineService.deleteVaccineByManufacturersName(manufacturersName);
     }
 
 

@@ -2,6 +2,7 @@ package hr.sandelic.waxapp;
 
 public class Vaccine {
 
+    private Long id;
     private String researchName;
     private String manufacturersName;
     private String vaccineType;
@@ -10,6 +11,7 @@ public class Vaccine {
 
 
     public Vaccine(String researchName, String manufacturersName, String vaccineType, Integer requiredDosage, Integer availableDosageCount) {
+       this.id = id;
         this.researchName = researchName;
         this.manufacturersName = manufacturersName;
         this.vaccineType = vaccineType;
@@ -18,6 +20,14 @@ public class Vaccine {
     }
 
     public Vaccine() {
+    }
+
+   public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getResearchName() {

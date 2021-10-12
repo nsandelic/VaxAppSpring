@@ -25,14 +25,15 @@ public class VaccineServiceImplementation  implements VaccineService{
     }
 
     @Override
-    public VaccineDTO findVaccineByManufacturersName(String researchName) {
-        return vaccineRepository.findVaccineByManufacturersName(researchName).map(this::mapVaccineToDTO).orElse(null);
+    public VaccineDTO findVaccineByManufacturersName(String manufacturersName) {
+        return vaccineRepository.findVaccineByManufacturersName(manufacturersName).map(this::mapVaccineToDTO).orElse(null);
     }
     @Override
     public VaccineDTO  addNewVaccine(VaccineCommand command) {
         VaccineDTO nullDTO = null;
+        Vaccine commandToVaccine = mapCommandToVaccine(command);
 
-        Vaccine newVaccine = vaccineRepository.addNewVaccine(command);
+        Vaccine newVaccine = vaccineRepository.addNewVaccine(commandToVaccine);
 
         if(newVaccine == null)
             return nullDTO;
@@ -44,14 +45,24 @@ public class VaccineServiceImplementation  implements VaccineService{
     }
 
     @Override
-    public int deleteaccineByResearchName(String researchName) {
-        int deleted = vaccineRepository.deleteaccineByResearchName(researchName);
-        return deleted;
+    public void deleteVaccineByManufacturersName(String manufacturersName) {
+        vaccineRepository.deleteVaccineByManufacturersName(manufacturersName);
     }
 
     private VaccineDTO mapVaccineToDTO(final Vaccine vaccine){
         return new VaccineDTO(vaccine.getResearchName(),vaccine.getManufacturersName(), vaccine.getRequiredDosage());
     }
+
+    private Vaccine mapCommandToVaccine(VaccineCommand command) {
+        Vaccine vaccine = new Vaccine();
+        vaccine.setResearchName(command.getResearchName());
+        vaccine.setManufacturersName(command.getManufacturersName());
+        vaccine.setVaccineType(command.getVaccineType());
+        vaccine.setRequiredDosage(command.getRequiredDosage());
+        vaccine.setAvailableDosageCount(command.getAvailableDosageCount());
+        return vaccine;
+    }
+
 
 
 }
