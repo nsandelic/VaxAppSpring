@@ -25,7 +25,7 @@ public class VaccineController {
     }
 
     @GetMapping( path = "/{manufacturersName}")
-    public ResponseEntity<VaccineDTO> getVaccineByResearchName(@PathVariable("manufacturersName") final String manufacturersName){
+    public ResponseEntity<VaccineDTO> getVaccineByManufacturersName(@PathVariable("manufacturersName") final String manufacturersName){
 
             VaccineDTO vaccineDTO = vaccineService.findVaccineByManufacturersName(manufacturersName);
             if (vaccineDTO == null)

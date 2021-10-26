@@ -29,10 +29,11 @@ public class VaccineServiceImplementation  implements VaccineService{
         return vaccineRepository.findVaccineByManufacturersName(manufacturersName).map(this::mapVaccineToDTO).orElse(null);
     }
     @Override
-    public VaccineDTO  addNewVaccine(VaccineCommand command) {
+    public VaccineDTO   addNewVaccine(VaccineCommand command) {
+
+
         VaccineDTO nullDTO = null;
         Vaccine commandToVaccine = mapCommandToVaccine(command);
-
         Vaccine newVaccine = vaccineRepository.addNewVaccine(commandToVaccine);
 
         if(newVaccine == null)
@@ -42,6 +43,8 @@ public class VaccineServiceImplementation  implements VaccineService{
             return newVaccineDTO;
         }
 
+
+
     }
 
     @Override
@@ -50,7 +53,7 @@ public class VaccineServiceImplementation  implements VaccineService{
     }
 
     private VaccineDTO mapVaccineToDTO(final Vaccine vaccine){
-        return new VaccineDTO(vaccine.getResearchName(),vaccine.getManufacturersName(), vaccine.getRequiredDosage());
+        return new VaccineDTO(vaccine.getId(), vaccine.getResearchName(),vaccine.getManufacturersName(), vaccine.getVaccineType(), vaccine.getRequiredDosage(), vaccine.getAvailableDosageCount());
     }
 
     private Vaccine mapCommandToVaccine(VaccineCommand command) {
